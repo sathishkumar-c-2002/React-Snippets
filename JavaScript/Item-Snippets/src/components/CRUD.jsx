@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 function CrudOperation() {
     const [items, setItems] = useState([
-        { id: 1, name: 'Item1', description: "This is One" },
-        { id: 2, name: 'Item2', description: "This is Two" },
+        // { id: 1, name: 'Item1', description: "This is One" },
+        // { id: 2, name: 'Item2', description: "This is Two" },
     ]);
 
     const [currentItem, setCurrentItem] = useState({ id: null, name: '', description: '' });
@@ -13,7 +13,7 @@ function CrudOperation() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (editing == true) {
-            setItems(items.map(item => (item.id === currentItem.id ? currentItem : item)));
+            setItems(items.map(item => (item.id == currentItem.id ? currentItem : item)));
         }
         else {
             setItems([...items, { ...currentItem, id: Date.now() }]);
@@ -23,7 +23,7 @@ function CrudOperation() {
     }
 
     const handleDelete = (id) => {
-        setItems(items.filter(item => item.id == id))
+        setItems(items.filter(item => item.id !== id))
     }
 
     const handleEdit = (item) => {
