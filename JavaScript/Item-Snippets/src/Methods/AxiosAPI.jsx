@@ -8,7 +8,9 @@ const AxiosAPI = () => {
             .then((response) => { setData(response.data.slip.advice) })
     }, [])
     return (
-        <div>{data}</div>
+        <div>
+            {data}
+        </div>
     )
 }
 
